@@ -15,18 +15,18 @@ class Solution:
         if not head:
             return None
         else:
-            vals = [head.val]
-            while head.next:
+            nodes = [head]
+            while head.next is not None:
                 head = head.next
-                vals.append(head.val)
+                nodes.append(head)
 
         virtualHead = ListNode(-1)
         head = virtualHead
-        # print(vals)
-        while vals:
-            newNode = ListNode(vals.pop())
-            head.next = newNode
-            head = newNode
+
+        while nodes:
+            head.next = nodes.pop()
+            head = head.next
+        head.next = None
         return virtualHead.next
 
 # @lc code=end
